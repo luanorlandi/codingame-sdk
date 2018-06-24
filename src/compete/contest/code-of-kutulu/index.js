@@ -65,7 +65,9 @@ while (turn < MAX_TURN) {
   const closestExplorer = myExplorer.closestUnit(enemyExplorers);
   const closestWanderer = myExplorer.closestUnit(wanderers);
 
-  if (closestWanderer === null) {
+  if (myExplorer.shouldPlan()) {
+    print('PLAN');
+  } else if (closestWanderer === null) {
     const { position } = closestExplorer;
     print(`MOVE ${position.x} ${position.y}`);
   } else if (closestExplorer === null) {
