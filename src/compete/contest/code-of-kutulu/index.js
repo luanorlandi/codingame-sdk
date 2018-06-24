@@ -60,7 +60,28 @@ while (turn < MAX_TURN) {
     }
   }
 
-  print('WAIT');
+  const myExplorer = explorers[0];
+  const enemyExplorers = explorers.slice(1, explorers.length);
+  const closestExplorer = myExplorer.closestUnit(enemyExplorers);
+  const closestWanderer = myExplorer.closestUnit(wanderers);
+
+  if (closestWanderer === null) {
+    const { position } = closestExplorer;
+    print(`MOVE ${position.x} ${position.y}`);
+  } else if (closestExplorer === null) {
+    print('WAIT');
+  } else {
+    const explorerDistance = myExplorer.position.distanceTo(closestExplorer.position);
+    const wandererDistance = myExplorer.position.distanceTo(closestWanderer.position);
+
+    if (explorerDistance + 1 < wandererDistance) {
+      const { position } = closestExplorer;
+      print(`MOVE ${position.x} ${position.y}`);
+    } else {
+      const position = myExplorer.moveAwayPosition(closestWanderer.position);
+      print(`MOVE ${position.x} ${position.y}`);
+    }
+  }
 
   turn += 1;
 }

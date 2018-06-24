@@ -3,9 +3,9 @@
   "ACCOMPANIED_RANGE": 2,
   "WANDERER_SPOOK_DAMAGE": 20,
   "map": {
-    "MAP_WALL": "#",
-    "MAP_WANDERER": "w",
-    "MAP_EMPTY_CELL": "."
+    "WALL": "#",
+    "WANDERER_SPAWNER": "w",
+    "EMPTY_CELL": "."
   },
   "ENTITY_EXPLORER": "EXPLORER",
   "ENTITY_WANDERER": "WANDERER",
